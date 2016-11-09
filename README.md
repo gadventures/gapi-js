@@ -9,7 +9,7 @@ Usage
 
 First, create a new Gapi instance by passing your Gapi key to the constructor.
 
-```
+```javascript
 import Gapi from 'gapi-client';
 
 const g = new Gapi(<your-gapi-key>);
@@ -17,7 +17,7 @@ const g = new Gapi(<your-gapi-key>);
 
 Using this instance you can make your requests.
 
-```
+```javascript
 g.get(<resource-full-url>)
 g.end( (error, response) => {
     if( error) {
@@ -35,7 +35,7 @@ Added Features
 
 Page requests can be made using the `page()` method.
 
-```
+```javascript
 g.get(<resource-full-url>)
 g.page(2) // will make a request for the second page of results
 ```
