@@ -15,9 +15,10 @@ import Gapi from 'gapi-client';
 const g = new Gapi({ key: yourGapiKey [, url: gapiUrl, proxy: yourProxy] });
 ```
 
-The following commands are all chainable, but must always start with the resource name. When chaining `get`, `list`, `post`, `patch`, and `del`, only the last chained item will take affect on the request.
+The following commands are all chainable, but must always start with the resource name. When chaining [`get()`](#getresourceid), [`list()`](#list), [`post()`](#post-and-patchresourceid), [`patch()`](#post-and-patchresourceid), and [`del()`](#delresourceid), only the last chained item will take affect on the request.
   
-Also, no requests to gapi will be made until [`end()`](#endcallback) is called.
+Also, no requests to gapi will be made until [`end()`](#end-error-response---) is called.
+
 
 ### `get(resourceId)`
 
@@ -37,7 +38,7 @@ g.end( (error, response) => {
 
 ### `list()`
 
-Request a list of items from the resource. Based on gapi's pagination, by default, will return the 20 items from the first page. To change the requested page and/or the page size, look at [`page()`](#pagepage-pagesize) 
+Request a list of items from the resource. Based on gapi's pagination, by default, will return the 20 items from the first page. To change the requested page and/or the page size, look at [`page()`](#pagepage--pagesize) 
 
 ```javascript
 g.places.list();  // page = 1, pageSize = 20
@@ -57,7 +58,7 @@ g.places.list().page(2, 15)  // page = 2, pageSize = 15
 ```
 
 ### `post()` and `patch(resourceId)`
-Post and patch requests to gapi. To pass data, you must also call [`send()`](#sendquerystring) in your chain.
+Post and patch requests to gapi. To pass data, you must also call [`send()`](#sendjsonstringobject) in your chain.
 
 ```javascript
 g.countries.post().send({name: 'Canada', id: 'CA'}).end() // will add a new country to the `countries` resource
@@ -67,7 +68,7 @@ g.places.end()
 ```
 
 ### `send(jsonString|object)`
-Allows for passing parameters to `post()` or `patch()`. `send()` accepts many formats
+Allows for passing parameters to [`post()`](#post-and-patchresourceid) or [`patch()`](#post-and-patchresourceid). `send()` accepts many formats
  
 ```javascript
 
