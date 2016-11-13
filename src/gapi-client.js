@@ -106,4 +106,8 @@ export default class Gapi extends GapiResources{
     return this;
   }
 
+  then (resolve, reject) {
+    return this.request.then(resolve, reject);
+  }
+
 }
