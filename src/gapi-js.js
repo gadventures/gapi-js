@@ -21,7 +21,7 @@ export default class Gapi extends GapiResources{
     this.baseUrl = url;
     this.key = key;
     this.proxy = proxy;
-    this.query = {};
+    this.queryString = {};
   }
 
   _setHeaders() {
@@ -53,19 +53,24 @@ export default class Gapi extends GapiResources{
     return this;
   }
 
-  list() {
+  list(number=1, size=20) {
     /**
      *  By default will look for the first 20 items
     **/
     const url = this._getUrl();
     this.request = request.get(url);
-    this.page();
+    this.page(number, size);
     this._setHeaders();
     return this;
   }
 
+  query(queryString) {
+    this.queryString = Object.assign({}, this.queryString, queryString);
+    return this;
+  }
+
   page(number=1, size=20) {
-    this.query = Object.assign({}, this.query, {page: number, max_per_page: size});
+    this.queryString = Object.assign({}, this.queryString, {page: number, max_per_page: size});
     return this;
   }
 
@@ -101,7 +106,7 @@ export default class Gapi extends GapiResources{
   }
 
   end (callback) {
-    this.request.query(this.query);
+    this.request.query(this.queryString);
     this.request.end(callback);
     return this;
   }
