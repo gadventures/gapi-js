@@ -1,19 +1,17 @@
 {
-  "name": "gapi-client",
-  "version": "0.0.0",
-  "description": "JS client for GAPI ",
-  "main": "build/gapi-client.js",
+  "name": "gapi-js",
+  "version": "1.0.0-alpha.1",
+  "description": "A js client for GAPI",
+  "main": "build/gapi-js.js",
   "scripts": {
     "start": "webpack-dev-server -d --inline --history-api-fallback",
     "build": "webpack --display-error-details -p --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sia Malekpour",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "jwt-decode": "2.0.1",
-    "superagent": "2.0.0",
-    "superagent-no-cache": "^0.1.0"
+    "superagent": "2.0.0"
   },
   "devDependencies": {
     "babel-core": "6.8.x",
@@ -41,5 +39,14 @@
     "webpack": "^1.13.2",
     "webpack-merge": "^0.14.1",
     "webpack-validator": "^2.2.9"
-  }
+  },
+  "repository" : {
+    "type" : "git" ,
+    "url" : "git@github.com:gadventures/gapi-js.git"
+  },
+  "homepage" : "https://github.com/gadventures/gapi-js",
+  "bugs" : {
+    "url" : "https://github.com/gadventures/gapi-js/issues"
+  },
+  "keywords": ["gapi", "superagent"]
 }

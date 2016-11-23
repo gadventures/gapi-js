@@ -2,12 +2,11 @@ const path               = require('path'),
       webpack            = require('webpack'),
       merge              = require('webpack-merge'),
       validate           = require('webpack-validator'),
-      HtmlWebpackPlugin  = require('html-webpack-plugin'),
       cleanWebpackPlugin = require('clean-webpack-plugin');
 
 const PATHS = {
   src:     path.join(__dirname, 'src'),
-  main:     path.join(__dirname, 'src', 'gapi-client.js'),
+  main:     path.join(__dirname, 'src', 'gapi-js.js'),
   build:    path.join(__dirname, 'build')
 };
 
@@ -15,10 +14,9 @@ const CONFIG = {
 
   base: {
     entry: {
-      app: ['babel-polyfill', PATHS.main]
+      'gapi-js': ['babel-polyfill', PATHS.main]
     },
-    cache: true,
-    plugins : [ new HtmlWebpackPlugin ({ title : 'Temp' }) ]
+    cache: true
   },
 
   getOutput: {

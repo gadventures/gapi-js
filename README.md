@@ -10,7 +10,7 @@ Usage
 First, create a new Gapi instance by passing your Gapi key to the constructor. By default the url will be set to `https://rest.gadventures.com`.
 
 ```javascript
-import Gapi from 'gapi-client';
+import Gapi from 'gapi-js';
 
 const g = new Gapi({ key: yourGapiKey [, url: gapiUrl, proxy: yourProxy] });
 ```
