@@ -15,9 +15,11 @@ import Gapi from 'gapi-js';
 const g = new Gapi({ key: yourGapiKey [, url: gapiUrl, proxy: yourProxy] });
 ```
 
-The following commands are all chainable, but must always start with the resource name. When chaining [`get()`](#getresourceid), [`list()`](#list), [`post()`](#post-and-patchresourceid), [`patch()`](#post-and-patchresourceid), and [`del()`](#delresourceid), only the last chained item will take affect on the request.
+The following commands are all chainable, but must always start with the resource name.
+
+Keep in mind, when chaining [`get()`](#getresourceid), [`list()`](#list), [`post()`](#post-and-patchresourceid), [`patch()`](#post-and-patchresourceid), and [`del()`](#delresourceid), only the last chained item will take affect on the request.
   
-Also, no requests to gapi will be made until [`end()`](#end-error-response---) is called.
+`gapi-js` will wait untill [`end()`](#end-error-response---) is called, to make the actual server request.
 
 
 ### `get(resourceId)`
@@ -45,6 +47,14 @@ g.places.list();  // page = 1, pageSize = 20
 g.places.list().page(2)  // page = 2 , pageSize = 20
 g.places.list().page(2, 15)  // page = 2 , pageSize = 15
 g.end(callback);
+```
+
+### `query(queryString)`
+
+Querystring parameters to pass to Gapi
+
+```javascript
+g.places.list().query({name: 'Station'})  // search for all places that include 'Station' in their name
 ```
 
 ### `page([page [, pageSize]])`
@@ -100,7 +110,7 @@ g.places.del('8317609').end()
 ```
 
 ### `end( (error, response) => {} )`
-Your callback function will always be passed two arguments: error and response. If no error occurred, the first argument will be null
+Your callback function will always be passed two arguments: `error` and `response`. If no error occurred, the first argument will be null
 
 ```javascript
 g.countries
@@ -113,10 +123,3 @@ g.countries
     }
  })
 ```
-
-Features to Come
-----------------
-
-* Bulk requests
-* Search
-* Ordering
