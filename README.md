@@ -1,6 +1,6 @@
 gapi-js
 ===========
-A simple js client for gapi based on SuperAgent
+A simple js client for gapi based on [SuperAgent](https://github.com/visionmedia/superagent)
 
 __This project is still in alpha phase and not ready for actual use__
 
@@ -116,7 +116,7 @@ Your callback function will always be passed two arguments: `error` and `respons
 g.countries
  .get('123')
  .end( (err, res) => {
-    if( error ) {
+    if( err ) {
         // do someting w/ the error object
     }else{
         // do something with the response object
