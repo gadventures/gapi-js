@@ -22,12 +22,12 @@ Keep in mind, when chaining [`get()`](#getresourceid), [`list()`](#list), [`post
 `gapi-js` will wait untill [`end()`](#end-error-response---) is called, to make the actual server request.
 
 
-### `get(resourceId)`
+#### `get(resourceId)`
 
 Used to request a single object.
 
 ```javascript
-g.countries.get('1090831')
+g.countries.get(1090831)
 g.end( (error, response) => {
     if( error ) {
         // do someting w/ the error object
@@ -38,7 +38,7 @@ g.end( (error, response) => {
 ```
 
 
-### `list()`
+#### `list()`
 
 Request a list of items from the resource. Based on gapi's pagination, by default, will return the 20 items from the first page. To change the requested page and/or the page size, look at [`page()`](#pagepage--pagesize) 
 
@@ -49,7 +49,7 @@ g.places.list().page(2, 15)  // page = 2 , pageSize = 15
 g.end(callback);
 ```
 
-### `query(queryString)`
+#### `query(queryString)`
 
 Querystring parameters to pass to Gapi
 
@@ -57,7 +57,7 @@ Querystring parameters to pass to Gapi
 g.places.list().query({name: 'Station'})  // search for all places that include 'Station' in their name
 ```
 
-### `page([page [, pageSize]])`
+#### `page([page [, pageSize]])`
 
 Request a certain page. By default will request the first page with a page size of 20;
 
@@ -67,7 +67,7 @@ g.places.list().page(2)      // page = 2, pageSize = 20
 g.places.list().page(2, 15)  // page = 2, pageSize = 15
 ```
 
-### `post()` and `patch(resourceId)`
+#### `post()` and `patch(resourceId)`
 Post and patch requests to gapi. To pass data, you must also call [`send()`](#sendjsonstringobject) in your chain.
 
 ```javascript
@@ -77,7 +77,7 @@ g.places.patch('1090831').send({name: 'Toronto'}); // will update the name of a 
 g.places.end()
 ```
 
-### `send(jsonString|object)`
+#### `send(jsonString|object)`
 Allows for passing parameters to [`post()`](#post-and-patchresourceid) or [`patch()`](#post-and-patchresourceid). `send()` accepts many formats
  
 ```javascript
@@ -102,14 +102,14 @@ g.places.post()
 
 ```
 
-### `del(resourceId)`
+#### `del(resourceId)`
 Remove a resource from the server.
 
 ```javascript
 g.places.del('8317609').end()
 ```
 
-### `end( (error, response) => {} )`
+#### `end( (error, response) => {} )`
 Your callback function will always be passed two arguments: `error` and `response`. If no error occurred, the first argument will be null
 
 ```javascript
