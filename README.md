@@ -2,7 +2,7 @@ gapi-js
 ===========
 A simple js client for gapi based on [SuperAgent](https://github.com/visionmedia/superagent)
 
-__This project is still in alpha phase and not ready for actual use__
+> This project is still in alpha phase and not ready for actual use
 
 Usage
 -----
