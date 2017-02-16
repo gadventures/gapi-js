@@ -25,13 +25,14 @@ export default class Gapi extends GapiResources{
   }
 
   _setHeaders() {
-    this.request.accept('application/json');
+    // this.request.accept('application/json');
+    this.request.accept('application/json;version=alldossiers');
     this.request.type('application/json');
     this.request.set('X-Application-Key', this.key);
-    this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
+    // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
   }
 
-  _getUrl(...ids) {
+  _getUrl(id='') {
     /**
      *  Builds the full gapi request URL based on the resource provided
      *  `this.resource` is set by `GapiResource` getter methods.
@@ -39,15 +40,15 @@ export default class Gapi extends GapiResources{
     if( ! this.resource ) {
       throw 'No resource has been provided.';  // TODO: Something more declarative.
     }
-    return path.join(this.baseUrl, this.resource, ...ids);
+    return `${this.baseUrl}/${this.resource}/${id.toString()}`;
   }
 
-  get( ...resourceIds ) {
+  get( id ) {
     /**
      * Support for multiple resource Ids
      * For resources that accept more than one id. e.g. `itineraries/123/456/`
     **/
-    const url = this._getUrl(...resourceIds);
+    const url = this._getUrl(id);
     this.request = request.get(url);
     this._setHeaders();
     return this;
@@ -86,15 +87,15 @@ export default class Gapi extends GapiResources{
     return this;
   }
 
-  patch (...resourceIds) {
-    const url = this._getUrl(...resourceIds);
+  patch (id) {
+    const url = this._getUrl(id);
     this.request = request.patch(url);
     this._setHeaders();
     return this;
   }
 
-  del (...resourceIds) {
-    const url = this._getUrl(...resourceIds);
+  del (id) {
+    const url = this._getUrl(id);
     this.request = request.del(url);
     this._setHeaders();
     return this;
