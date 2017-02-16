@@ -14,8 +14,19 @@ import Gapi from 'gapi-js';
 
 const g = new Gapi({ key: yourGapiKey [, url: gapiUrl, proxy: yourProxy] });
 ```
+Methods
+-------
 
-The following commands are all chainable, but must always start with the resource name.
+* [`get()`](#getresourceid)
+* [`list()`](#list)
+* [`query()`](#queryquerystring)
+* [`page()`](#pagepage--pagesize)
+* [`post()`, `patch()`](#post-and-patchresourceid)
+* [`send()`](#sendjsonstringobject)
+* [`del()`](#delresourceid)
+* [`end()`](#end-error-response---)
+
+These commands are all chainable, but must always start with a resource name.
 
 Keep in mind, when chaining [`get()`](#getresourceid), [`list()`](#list), [`post()`](#post-and-patchresourceid), [`patch()`](#post-and-patchresourceid), and [`del()`](#delresourceid), only the last chained item will take affect on the request.
   
