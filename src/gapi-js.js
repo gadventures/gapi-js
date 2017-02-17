@@ -1,6 +1,5 @@
 import request from 'superagent';
 import GapiResources from './gapi-resources';
-const path = require ('path');
 
 // TODO: Accept integer resourcesIds for `get`, `patch`, and `del`; right now only string are allowed
 // TODO: Errors
@@ -9,7 +8,7 @@ const path = require ('path');
 //          before `end()` could be called
 // TODO: Authentication
 
-module.exports = class Gapi extends GapiResources {
+export default class Gapi extends GapiResources {
 
   constructor ({url='https://rest.gadventures.com', key, proxy}){
     super();
@@ -25,7 +24,6 @@ module.exports = class Gapi extends GapiResources {
   }
 
   _setHeaders() {
-    // this.request.accept('application/json');
     this.request.accept('application/json;version=alldossiers');
     this.request.type('application/json');
     this.request.set('X-Application-Key', this.key);
