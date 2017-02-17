@@ -15,7 +15,7 @@ const CONFIG = {
 
   base: {
     entry: {
-      app: ['babel-polyfill', PATHS.main]
+      app: [PATHS.main]
     },
     cache: true,
     plugins : [ new HtmlWebpackPlugin ({ title : 'Temp' }) ]
