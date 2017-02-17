@@ -1,6 +1,6 @@
 {
   "name": "gapi-js",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "A js client for GAPI",
   "main": "build/gapi-js.js",
   "scripts": {
@@ -41,13 +41,16 @@
     "webpack-merge": "^0.14.1",
     "webpack-validator": "^2.2.9"
   },
-  "repository" : {
-    "type" : "git" ,
-    "url" : "git@github.com:gadventures/gapi-js.git"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gadventures/gapi-js.git"
   },
-  "homepage" : "https://github.com/gadventures/gapi-js",
-  "bugs" : {
-    "url" : "https://github.com/gadventures/gapi-js/issues"
+  "homepage": "https://github.com/gadventures/gapi-js",
+  "bugs": {
+    "url": "https://github.com/gadventures/gapi-js/issues"
   },
-  "keywords": ["gapi", "superagent"]
+  "keywords": [
+    "gapi",
+    "superagent"
+  ]
 }
