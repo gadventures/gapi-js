@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server -d --inline --history-api-fallback",
     "build": "webpack --display-error-details -p --progress --colors",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sia Malekpour",
