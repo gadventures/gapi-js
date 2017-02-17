@@ -9,7 +9,7 @@ const path = require ('path');
 //          before `end()` could be called
 // TODO: Authentication
 
-export default class Gapi extends GapiResources{
+module.exports = class Gapi extends GapiResources {
 
   constructor ({url='https://rest.gadventures.com', key, proxy}){
     super();
