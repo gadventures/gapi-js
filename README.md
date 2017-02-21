@@ -2,7 +2,7 @@ gapi-js
 ===========
 A simple js client for gapi based on [SuperAgent](https://github.com/visionmedia/superagent)
 
-> This project is still in alpha phase and not ready for actual use
+> **Important:** as of now gapi-js only supports a subset of resources. Look in [src/gapi-resources.js](https://github.com/gadventures/gapi-js/blob/master/src/gapi-resources.js) to see the list of supported resources.
 
 Usage
 -----
