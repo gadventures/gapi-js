@@ -1,6 +1,6 @@
 gapi-js
 ===========
-A simple js client for the G Adventures API (GAPI) based on [SuperAgent](https://github.com/visionmedia/superagent)
+A simple js client for the G Adventures' API (G API) based on [SuperAgent](https://github.com/visionmedia/superagent)
 
 Before you can use this package you need to [signup for Gapi](https://developers.gadventures.com/docs/index.html)
 
