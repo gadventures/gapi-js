@@ -1,26 +1,146 @@
-'use strict';
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("superagent"));
+	else if(typeof define === 'function' && define.amd)
+		define(["superagent"], factory);
+	else if(typeof exports === 'object')
+		exports["gapi-js"] = factory(require("superagent"));
+	else
+		root["gapi-js"] = factory(root["_"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+"use strict";
+class GapiResources {
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  constructor() {
+    this.resource = null;
+  }
 
-var _superagent = require('superagent');
+  get countries() { this.resource = 'countries'; return this; }
+  set countries(value) { return this; }
 
-var _superagent2 = _interopRequireDefault(_superagent);
+  get places() { this.resource = 'places'; return this;}
+  set places(value) { return this; }
 
-var _gapiResources = require('./gapi-resources');
+  get dossiers() { this.resource = 'dossiers'; return this; }
+  set dossiers(value) { return this; }
 
-var _gapiResources2 = _interopRequireDefault(_gapiResources);
+  get country_dossiers() { this.resource = 'country_dossiers'; return this; }
+  set country_dossiers(value) { return this; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  get place_dossiers() { this.resource = 'place_dossiers'; return this;}
+  set place_dossiers(value) { return this; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  get transport_dossiers() { this.resource = 'transport_dossiers'; return this; }
+  set transport_dossiers(value) { return this; }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+  get activity_dossiers() { this.resource = 'activity_dossiers'; return this; }
+  set activity_dossiers(value) { return this; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+  get accommodation_dossiers() { this.resource = 'accommodation_dossiers'; return this; }
+  set accommodation_dossiers(value) { return this; }
+
+  get features() { this.resource = 'features'; return this; }
+  set features(value) { return this; }
+
+  get dossier_features() { this.resource = 'dossier_features'; return this; }
+  set dossier_features(value) { return this; }
+
+  get dossier_segments() { this.resource = 'dossier_segments'; return this; }
+  set dossier_segments(value) { return this; }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = GapiResources;
+
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_superagent__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_superagent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_superagent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gapi_resources__ = __webpack_require__(0);
+
+
 
 // TODO: Accept integer resourcesIds for `get`, `patch`, and `del`; right now only string are allowed
 // TODO: Errors
@@ -29,145 +149,118 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //          before `end()` could be called
 // TODO: Authentication
 
-var Gapi = function (_GapiResources) {
-  _inherits(Gapi, _GapiResources);
+class Gapi extends __WEBPACK_IMPORTED_MODULE_1__gapi_resources__["a" /* default */] {
 
-  function Gapi(_ref) {
-    var _ref$url = _ref.url,
-        url = _ref$url === undefined ? 'https://rest.gadventures.com' : _ref$url,
-        key = _ref.key,
-        proxy = _ref.proxy;
+  constructor ({url='https://rest.gadventures.com', key, proxy}){
+    super();
 
-    _classCallCheck(this, Gapi);
-
-    var _this = _possibleConstructorReturn(this, (Gapi.__proto__ || Object.getPrototypeOf(Gapi)).call(this));
-
-    if (!key) {
-      throw 'A gapi key is required when instantiating Gapi';
+    if( !key ) {
+      throw 'A gapi key is required when instantiating Gapi'
     }
 
-    _this.baseUrl = url;
-    _this.key = key;
-    _this.proxy = proxy;
-    _this.queryString = {};
-    return _this;
+    this.baseUrl = url;
+    this.key = key;
+    this.proxy = proxy;
+    this.queryString = {};
   }
 
-  _createClass(Gapi, [{
-    key: '_setHeaders',
-    value: function _setHeaders() {
-      this.request.accept('application/json;version=alldossiers');
-      this.request.type('application/json');
-      this.request.set('X-Application-Key', this.key);
-      // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
-    }
-  }, {
-    key: '_getUrl',
-    value: function _getUrl() {
-      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  _setHeaders() {
+    this.request.accept('application/json;version=alldossiers');
+    this.request.type('application/json');
+    this.request.set('X-Application-Key', this.key);
+    // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
+  }
 
-      /**
-       *  Builds the full gapi request URL based on the resource provided
-       *  `this.resource` is set by `GapiResource` getter methods.
-      **/
-      if (!this.resource) {
-        throw 'No resource has been provided.'; // TODO: Something more declarative.
-      }
-      return this.baseUrl + '/' + this.resource + '/' + id.toString();
+  _getUrl(id='') {
+    /**
+     *  Builds the full gapi request URL based on the resource provided
+     *  `this.resource` is set by `GapiResource` getter methods.
+    **/
+    if( ! this.resource ) {
+      throw 'No resource has been provided.';  // TODO: Something more declarative.
     }
-  }, {
-    key: 'get',
-    value: function get(id) {
-      /**
-       * Support for multiple resource Ids
-       * For resources that accept more than one id. e.g. `itineraries/123/456/`
-      **/
-      var url = this._getUrl(id);
-      this.request = _superagent2.default.get(url);
-      this._setHeaders();
-      return this;
-    }
-  }, {
-    key: 'list',
-    value: function list() {
-      var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
+    return `${this.baseUrl}/${this.resource}/${id.toString()}`;
+  }
 
-      /**
-       *  By default will look for the first 20 items
-      **/
-      var url = this._getUrl();
-      this.request = _superagent2.default.get(url);
-      this.page(number, size);
-      this._setHeaders();
-      return this;
-    }
-  }, {
-    key: 'query',
-    value: function query(queryString) {
-      this.queryString = Object.assign({}, this.queryString, queryString);
-      return this;
-    }
-  }, {
-    key: 'page',
-    value: function page() {
-      var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
+  get( id ) {
+    /**
+     * Support for multiple resource Ids
+     * For resources that accept more than one id. e.g. `itineraries/123/456/`
+    **/
+    const url = this._getUrl(id);
+    this.request = __WEBPACK_IMPORTED_MODULE_0_superagent___default.a.get(url);
+    this._setHeaders();
+    return this;
+  }
 
-      this.queryString = Object.assign({}, this.queryString, { page: number, max_per_page: size });
-      return this;
-    }
-  }, {
-    key: 'order',
-    value: function order() {
-      // TODO: Not implemented
-      return this;
-    }
-  }, {
-    key: 'post',
-    value: function post() {
-      var url = this._getUrl();
-      this.request = _superagent2.default.post(url);
-      this._setHeaders();
-      return this;
-    }
-  }, {
-    key: 'patch',
-    value: function patch(id) {
-      var url = this._getUrl(id);
-      this.request = _superagent2.default.patch(url);
-      this._setHeaders();
-      return this;
-    }
-  }, {
-    key: 'del',
-    value: function del(id) {
-      var url = this._getUrl(id);
-      this.request = _superagent2.default.del(url);
-      this._setHeaders();
-      return this;
-    }
-  }, {
-    key: 'send',
-    value: function send(args) {
-      this.request.send(args);
-      return this;
-    }
-  }, {
-    key: 'end',
-    value: function end(callback) {
-      this.request.query(this.queryString);
-      this.request.end(callback);
-      return this;
-    }
-  }, {
-    key: 'then',
-    value: function then(resolve, reject) {
-      return this.request.then(resolve, reject);
-    }
-  }]);
+  list(number=1, size=20) {
+    /**
+     *  By default will look for the first 20 items
+    **/
+    const url = this._getUrl();
+    this.request = __WEBPACK_IMPORTED_MODULE_0_superagent___default.a.get(url);
+    this.page(number, size);
+    this._setHeaders();
+    return this;
+  }
 
-  return Gapi;
-}(_gapiResources2.default);
+  query(queryString) {
+    this.queryString = Object.assign({}, this.queryString, queryString);
+    return this;
+  }
 
-exports.default = Gapi;
+  page(number=1, size=20) {
+    this.queryString = Object.assign({}, this.queryString, {page: number, max_per_page: size});
+    return this;
+  }
+
+  order(...args) {
+    // TODO: Not implemented
+    return this;
+  }
+
+  post () {
+    const url = this._getUrl();
+    this.request = __WEBPACK_IMPORTED_MODULE_0_superagent___default.a.post(url);
+    this._setHeaders();
+    return this;
+  }
+
+  patch (id) {
+    const url = this._getUrl(id);
+    this.request = __WEBPACK_IMPORTED_MODULE_0_superagent___default.a.patch(url);
+    this._setHeaders();
+    return this;
+  }
+
+  del (id) {
+    const url = this._getUrl(id);
+    this.request = __WEBPACK_IMPORTED_MODULE_0_superagent___default.a.del(url);
+    this._setHeaders();
+    return this;
+  }
+
+  send ( args ) {
+    this.request.send( args );
+    return this;
+  }
+
+  end (callback) {
+    this.request.query(this.queryString);
+    this.request.end(callback);
+    return this;
+  }
+
+  then (resolve, reject) {
+    return this.request.then(resolve, reject);
+  }
+
+}
+/* harmony export (immutable) */ __webpack_exports__["default"] = Gapi;
+
+
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=gapi-js.js.map
