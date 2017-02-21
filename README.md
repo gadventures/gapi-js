@@ -1,13 +1,20 @@
 gapi-js
 ===========
-A simple js client for gapi based on [SuperAgent](https://github.com/visionmedia/superagent)
+A simple js client for the G Adventures API (GAPI) based on [SuperAgent](https://github.com/visionmedia/superagent)
+
+Before you can use this package you need to [signup for Gapi](https://developers.gadventures.com/docs/index.html)
 
 > **Important:** as of now gapi-js only supports a subset of resources. Look in [src/gapi-resources.js](https://github.com/gadventures/gapi-js/blob/master/src/gapi-resources.js) to see the list of supported resources.
 
 Usage
 -----
+First install the package
 
-First, create a new Gapi instance by passing your Gapi key to the constructor. By default the url will be set to `https://rest.gadventures.com`.
+```
+npm install gapi-js --save
+```
+
+Now, just create a new Gapi instance by passing your Gapi key to the constructor. By default the url will be set to `https://rest.gadventures.com`.
 
 ```javascript
 import Gapi from 'gapi-js';
@@ -30,8 +37,9 @@ These commands are all chainable, but must always start with a resource name.
 
 Keep in mind, when chaining [`get()`](#getresourceid), [`list()`](#list), [`post()`](#post-and-patchresourceid), [`patch()`](#post-and-patchresourceid), and [`del()`](#delresourceid), only the last chained item will take affect on the request.
   
-`gapi-js` will wait untill [`end()`](#end-error-response---) is called, to make the actual server request.
+`gapi-js` will wait until [`end()`](#end-error-response---) is called, to make the actual server request.
 
+Also, based on your credentials you may not have access to `post`, `patch`, and `del` methods.
 
 #### `get(resourceId)`
 
