@@ -15,6 +15,18 @@ module.exports = {
     library: 'gapi-js',
     libraryTarget: 'umd',
   },
+  module: {
+    loaders: [
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ]
+  },
   externals: {
     'superagent': {
       commonjs: 'superagent',
