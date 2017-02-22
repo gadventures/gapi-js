@@ -24,7 +24,7 @@ export default class Gapi extends GapiResources {
   }
 
   _setHeaders() {
-    this.request.accept('application/json;version=alldossiers');
+    this.request.accept(this.proxy ? `application/json;${this.proxy}` : `application/json`);
     this.request.type('application/json');
     this.request.set('X-Application-Key', this.key);
     // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
