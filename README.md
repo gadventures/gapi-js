@@ -1,18 +1,25 @@
 gapi-js
 ===========
-A simple js client for gapi based on [SuperAgent](https://github.com/visionmedia/superagent)
+A simple js client for the G Adventures' API (G API) based on [SuperAgent](https://github.com/visionmedia/superagent)
+
+Before you can use this package you need to [signup for G API](https://developers.gadventures.com/docs/index.html)
 
 > **Important:** as of now gapi-js only supports a subset of resources. Look in [src/gapi-resources.js](https://github.com/gadventures/gapi-js/blob/master/src/gapi-resources.js) to see the list of supported resources.
 
 Usage
 -----
+First install the package
 
-First, create a new Gapi instance by passing your Gapi key to the constructor. By default the url will be set to `https://rest.gadventures.com`.
+```
+npm install gapi-js --save
+```
+
+Now, just create a new G API instance by passing your G API key to the constructor. By default the url will be set to `https://rest.gadventures.com`.
 
 ```javascript
 import Gapi from 'gapi-js';
 
-const g = new Gapi({ key: yourGapiKey [, url: gapiUrl, proxy: yourProxy] });
+const g = new Gapi({ key: yourGAPIKey [, url: gApiUrl [, proxy: yourProxy]] });
 ```
 Methods
 -------
@@ -30,8 +37,9 @@ These commands are all chainable, but must always start with a resource name.
 
 Keep in mind, when chaining [`get()`](#getresourceid), [`list()`](#list), [`post()`](#post-and-patchresourceid), [`patch()`](#post-and-patchresourceid), and [`del()`](#delresourceid), only the last chained item will take affect on the request.
   
-`gapi-js` will wait untill [`end()`](#end-error-response---) is called, to make the actual server request.
+`gapi-js` will wait until [`end()`](#end-error-response---) is called, to make the actual server request.
 
+Also, based on your credentials you may not have access to `post`, `patch`, and `del` methods.
 
 #### `get(resourceId)`
 
@@ -51,7 +59,7 @@ g.end( (error, response) => {
 
 #### `list()`
 
-Request a list of items from the resource. Based on gapi's pagination, by default, will return the 20 items from the first page. To change the requested page and/or the page size, look at [`page()`](#pagepage--pagesize) 
+Request a list of items from the resource. Based on G API's pagination, by default, will return the 20 items from the first page. To change the requested page and/or the page size, look at [`page()`](#pagepage--pagesize) 
 
 ```javascript
 g.places.list();  // page = 1, pageSize = 20
@@ -62,7 +70,7 @@ g.end(callback);
 
 #### `query(queryString)`
 
-Querystring parameters to pass to Gapi
+Querystring parameters to pass to G API.
 
 ```javascript
 g.places.list().query({name: 'Station'})  // search for all places that include 'Station' in their name
@@ -79,7 +87,7 @@ g.places.list().page(2, 15)  // page = 2, pageSize = 15
 ```
 
 #### `post()` and `patch(resourceId)`
-Post and patch requests to gapi. To pass data, you must also call [`send()`](#sendjsonstringobject) in your chain.
+Post and patch requests to G API. To pass data, you must also call [`send()`](#sendjsonstringobject) in your chain.
 
 ```javascript
 g.countries.post().send({name: 'Canada', id: 'CA'}).end() // will add a new country to the `countries` resource
