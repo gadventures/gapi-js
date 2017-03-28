@@ -6,6 +6,7 @@
   "module": "src/gapi-js.js",
   "scripts": {
     "build": "webpack --display-error-details -p --progress --colors",
+    "build:watch": "webpack --display-error-details -p --progress --colors --watch",
     "prepublish": "npm run build",
     "test": "jest"
   },

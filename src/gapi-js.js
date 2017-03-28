@@ -68,8 +68,18 @@ export default class Gapi extends GapiResources {
     return this;
   }
 
-  order(...args) {
-    // TODO: Not implemented
+  order(...rest) {
+    if (rest == null) { return this; }
+    if (rest.length === 0) { return this; }
+    rest.forEach((orderProp) => {
+      let thisOrderProp = orderProp;
+      const isDesc = orderProp.indexOf('-') === 0;
+      console.log("ORDERPROP:", orderProp);
+      if (isDesc){ thisOrderProp = orderProp.slice(1); }
+      const updateObj = {};
+      updateObj[`order_by__${isDesc ? 'desc' : 'asc'}`] = thisOrderProp;
+      this.queryString = Object.assign({}, this.queryString, updateObj);
+    });
     return this;
   }
 
