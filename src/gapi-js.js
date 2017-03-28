@@ -1,7 +1,6 @@
 import request from 'superagent';
 import GapiResources from './gapi-resources';
 
-
 export default class Gapi extends GapiResources {
 
   constructor ({url='https://rest.gadventures.com', key, proxy}){
@@ -69,16 +68,18 @@ export default class Gapi extends GapiResources {
   }
 
   order(...rest) {
-    if (rest == null) { return this; }
-    if (rest.length === 0) { return this; }
-    rest.forEach((orderProp) => {
+    this.orderItems = rest;
+    return this;
+  }
+
+  setQueryString() {
+    this.request.query(this.queryString);
+    this.orderItems.forEach((orderProp) => {
       let thisOrderProp = orderProp;
       const isDesc = orderProp.indexOf('-') === 0;
-      console.log("ORDERPROP:", orderProp);
       if (isDesc){ thisOrderProp = orderProp.slice(1); }
-      const updateObj = {};
-      updateObj[`order_by__${isDesc ? 'desc' : 'asc'}`] = thisOrderProp;
-      this.queryString = Object.assign({}, this.queryString, updateObj);
+      const queryParam = `order_by__${isDesc ? 'desc' : 'asc'}`;
+      this.request.query(`${queryParam}=${thisOrderProp}`); 
     });
     return this;
   }
@@ -110,13 +111,16 @@ export default class Gapi extends GapiResources {
   }
 
   end (callback) {
-    this.request.query(this.queryString);
+    this.setQueryString();
     this.request.end(callback);
     return this;
   }
 
   then (resolve, reject) {
+    this.setQueryString();
     return this.request.then(resolve, reject);
   }
 
 }
+
+
