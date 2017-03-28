@@ -1,12 +1,6 @@
 import request from 'superagent';
 import GapiResources from './gapi-resources';
 
-// TODO: Accept integer resourcesIds for `get`, `patch`, and `del`; right now only string are allowed
-// TODO: Errors
-//       2. Every request will at least need one resource call
-//          and one call to either `get`, `list`, `all`, `post`, `patch`, `del`
-//          before `end()` could be called
-// TODO: Authentication
 
 export default class Gapi extends GapiResources {
 
@@ -30,7 +24,7 @@ export default class Gapi extends GapiResources {
     // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
   }
 
-  _getUrl(id='') {
+  _getUrl(...ids) {
     /**
      *  Builds the full gapi request URL based on the resource provided
      *  `this.resource` is set by `GapiResource` getter methods.
@@ -38,15 +32,16 @@ export default class Gapi extends GapiResources {
     if( ! this.resource ) {
       throw 'No resource has been provided.';  // TODO: Something more declarative.
     }
-    return `${this.baseUrl}/${this.resource}/${id.toString()}`;
+    const args = [this.baseUrl, this.resource, ...ids];
+    return args.join('/')
   }
 
-  get( id ) {
+  get( ids ) {
     /**
      * Support for multiple resource Ids
      * For resources that accept more than one id. e.g. `itineraries/123/456/`
     **/
-    const url = this._getUrl(id);
+    const url = this._getUrl(ids);
     this.request = request.get(url);
     this._setHeaders();
     return this;
@@ -69,7 +64,7 @@ export default class Gapi extends GapiResources {
   }
 
   page(number=1, size=20) {
-    this.queryString = Object.assign({}, this.queryString, {page: number, max_per_page: size});
+    this.query({page: number, max_per_page: size});
     return this;
   }
 
@@ -85,15 +80,15 @@ export default class Gapi extends GapiResources {
     return this;
   }
 
-  patch (id) {
-    const url = this._getUrl(id);
+  patch (ids) {
+    const url = this._getUrl(ids);
     this.request = request.patch(url);
     this._setHeaders();
     return this;
   }
 
-  del (id) {
-    const url = this._getUrl(id);
+  del (ids) {
+    const url = this._getUrl(ids);
     this.request = request.del(url);
     this._setHeaders();
     return this;
