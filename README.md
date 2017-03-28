@@ -41,7 +41,7 @@ Keep in mind, when chaining [`get()`](#getresourceid), [`list()`](#list), [`post
 
 Also, based on your credentials you may not have access to `post`, `patch`, and `del` methods.
 
-#### `get(resourceId)`
+#### `get(id [, id2 [, id3 ...]])`
 
 Used to request a single object.
 
@@ -56,6 +56,11 @@ g.end( (error, response) => {
 } )
 ```
 
+For resources like the itinerary that require additional ids you can pass the `variation_id` as the second argument.
+
+```javascript
+g.countries.itineraries(123, 456) // request itinerary 123 and variation 456
+```
 
 #### `list()`
 
@@ -86,7 +91,7 @@ g.places.list().page(2)      // page = 2, pageSize = 20
 g.places.list().page(2, 15)  // page = 2, pageSize = 15
 ```
 
-#### `post()` and `patch(resourceId)`
+#### `post()` and `patch(id [, id2 [, id3 ...]])`
 Post and patch requests to G API. To pass data, you must also call [`send()`](#sendjsonstringobject) in your chain.
 
 ```javascript
@@ -121,7 +126,7 @@ g.places.post()
 
 ```
 
-#### `del(resourceId)`
+#### `del(id [, id2 [, id3 ...]])`
 Remove a resource from the server.
 
 ```javascript
