@@ -2,6 +2,7 @@ import Gapi from './gapi-js';
 const testKey = 'test_29fb8348e8990800ad76e692feb0c8cce47f9476';
 let mockG = null;
 
+
 describe('Resource', () => {
 
   test('Sets correct resource', () => {
@@ -75,7 +76,6 @@ describe('Gapi.order', () => {
 
   test('refuses empty string props', () => {
     const orderedList = (prop) => {
-      console.log("PRAP:", prop);
       mockG.order(prop);
     }
     expect(orderedList.bind(null, '-')).toThrow();
@@ -133,4 +133,3 @@ describe('Gapi.order', () => {
     });
   });
 });
-

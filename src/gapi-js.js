@@ -1,6 +1,7 @@
 import request from 'superagent';
 import GapiResources from './gapi-resources';
 
+
 export default class Gapi extends GapiResources {
 
   constructor ({url='https://rest.gadventures.com', key, proxy}){
@@ -114,5 +115,3 @@ export default class Gapi extends GapiResources {
   }
 
 }
-
-
