@@ -26,6 +26,7 @@ Methods
 
 * [`get()`](#getresourceid)
 * [`list()`](#list)
+* [`order()`](#order)
 * [`query()`](#queryquerystring)
 * [`page()`](#pagepage--pagesize)
 * [`post()`, `patch()`](#post-and-patchresourceid)
@@ -73,6 +74,11 @@ g.places.list().page(2, 15)  // page = 2 , pageSize = 15
 g.end(callback);
 ```
 
+#### `order(...)`
+
+Specifies a list of ordering properties for the pagination, which must be properties on the target resource.  If the property in params is preceeded by a `-` then the list will be ordered on that property in descending instead of the (normally) ascending fashion.  i.e. .order('name', '-id') will sort first by name.  If any items in the list have the same name, those items will be sorted with highest id first.  Beware though, currently GAPI processes all ascending sort items first in the order they occured, then processes all descending items in the order they occurred.  Thus although  `.order('-name', 'place', 'id')` and `.order('place', 'id', '-name')` will produce different request urls, the results of the calls will be the same.  This weirdness may be subject to change.
+
+
 #### `query(queryString)`
 
 Querystring parameters to pass to G API.
@@ -80,6 +86,8 @@ Querystring parameters to pass to G API.
 ```javascript
 g.places.list().query({name: 'Station'})  // search for all places that include 'Station' in their name
 ```
+
+Passing this function an object with properties `order_by__asc` or `order_by__desc` is advised against as this may unexpectedly affect the outcome of the call to the order function.
 
 #### `page([page [, pageSize]])`
 
