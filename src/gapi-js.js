@@ -13,7 +13,6 @@ export default class Gapi extends GapiResources {
     this.baseUrl = url;
     this.key = key;
     this.proxy = proxy;
-    this.queryString = {};
   }
 
   _setHeaders() {
@@ -58,7 +57,7 @@ export default class Gapi extends GapiResources {
   }
 
   query(queryString) {
-    this.queryString = Object.assign({}, this.queryString, queryString);
+    this.request.query(queryString);
     return this;
   }
 
@@ -68,16 +67,11 @@ export default class Gapi extends GapiResources {
   }
 
   order(...rest) {
-    this.orderItems = rest;
-    return this;
-  }
-
-  setQueryString() {
-    this.request.query(this.queryString);
-    this.orderItems.forEach((orderProp) => {
+    rest.forEach((orderProp) => {
       let thisOrderProp = orderProp;
       const isDesc = orderProp.indexOf('-') === 0;
       if (isDesc){ thisOrderProp = orderProp.slice(1); }
+      if (thisOrderProp.length === 0) { throw new Error('Order parameter property is an empty string'); } 
       const queryParam = `order_by__${isDesc ? 'desc' : 'asc'}`;
       this.request.query(`${queryParam}=${thisOrderProp}`); 
     });
@@ -111,13 +105,11 @@ export default class Gapi extends GapiResources {
   }
 
   end (callback) {
-    this.setQueryString();
     this.request.end(callback);
     return this;
   }
 
   then (resolve, reject) {
-    this.setQueryString();
     return this.request.then(resolve, reject);
   }
 
