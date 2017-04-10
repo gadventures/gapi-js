@@ -32,7 +32,7 @@ export default class Gapi extends GapiResources {
       throw 'No resource has been provided.';  // TODO: Something more declarative.
     }
     const args = [this.baseUrl, this.resource, ...ids];
-    return args.join('/')
+    return args.join('/') + '/';
   }
 
   get( ids ) {
