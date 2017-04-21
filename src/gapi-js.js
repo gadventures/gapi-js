@@ -14,12 +14,20 @@ export default class Gapi extends GapiResources {
     this.baseUrl = url;
     this.key = key;
     this.proxy = proxy;
+    this.queryParams = {};
+    this.dupableParams = [];
   }
 
-  _setHeaders() {
+  _setHeadersParams() {
     this.request.accept(this.proxy ? `application/json;${this.proxy}` : `application/json`);
     this.request.type('application/json');
     this.request.set('X-Application-Key', this.key);
+    
+    this.request.query(this.queryParams);
+    this.dupableParams.forEach((paramPair) => {
+      this.request.query(`${paramPair[0]}=${paramPair[1]}`);
+    });
+    return this;
     // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
   }
 
@@ -42,7 +50,6 @@ export default class Gapi extends GapiResources {
     **/
     const url = this._getUrl(ids);
     this.request = request.get(url);
-    this._setHeaders();
     return this;
   }
 
@@ -53,12 +60,11 @@ export default class Gapi extends GapiResources {
     const url = this._getUrl();
     this.request = request.get(url);
     this.page(number, size);
-    this._setHeaders();
     return this;
   }
 
-  query(queryString) {
-    this.request.query(queryString);
+  query(queryObj) {
+    this.queryParams = Object.assign({}, this.queryParams, queryObj);
     return this;
   }
 
@@ -74,7 +80,8 @@ export default class Gapi extends GapiResources {
       if (isDesc){ thisOrderProp = orderProp.slice(1); }
       if (thisOrderProp.length === 0) { throw new Error('Order parameter property is an empty string'); } 
       const queryParam = `order_by__${isDesc ? 'desc' : 'asc'}`;
-      this.request.query(`${queryParam}=${thisOrderProp}`); 
+      this.dupableParams.push([queryParam, thisOrderProp]);
+      
     });
     return this;
   }
@@ -82,21 +89,18 @@ export default class Gapi extends GapiResources {
   post () {
     const url = this._getUrl();
     this.request = request.post(url);
-    this._setHeaders();
     return this;
   }
 
   patch (ids) {
     const url = this._getUrl(ids);
     this.request = request.patch(url);
-    this._setHeaders();
     return this;
   }
 
   del (ids) {
     const url = this._getUrl(ids);
     this.request = request.del(url);
-    this._setHeaders();
     return this;
   }
 
@@ -106,12 +110,12 @@ export default class Gapi extends GapiResources {
   }
 
   end (callback) {
-    this.request.end(callback);
+    this._setHeadersParams().request.end(callback);
     return this;
   }
 
   then (resolve, reject) {
-    return this.request.then(resolve, reject);
+    return this._setHeadersParams().request.then(resolve, reject);
   }
 
 }
