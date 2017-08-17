@@ -37,6 +37,12 @@ export default class GapiResources {
   get dossier_segments() { this.resource = 'dossier_segments'; return this; }
   set dossier_segments(value) { return this; }
 
+  get tour_categories() { this.resource = 'tour_categories'; return this; }
+  set tour_categories(value) { return this; }
+
+  get reporting_offices() { this.resource = 'reporting_offices'; return this; }
+  set reporting_offices(value) { return this; }
+
   get itineraries() { this.resource = 'itineraries'; return this; }
   set itineraries(value) { return this; }
 }
