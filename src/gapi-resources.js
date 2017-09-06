@@ -45,4 +45,10 @@ export default class GapiResources {
 
   get itineraries() { this.resource = 'itineraries'; return this; }
   set itineraries(value) { return this; }
+
+  get images() { this.resource = 'images'; return this; }
+  set images(value) { return this; }
+
+  get videos() { this.resource = 'videos'; return this; }
+  set videos(value) { return this; }
 }
