@@ -5,8 +5,9 @@
   "main": "build/gapi-js.js",
   "module": "src/gapi-js.js",
   "scripts": {
-    "build": "webpack --display-error-details -p --progress --colors",
-    "build:watch": "webpack --display-error-details -p --progress --colors --watch",
+    "start": "webpack-dev-server -d --inline --progress --colors --history-api-fallback --config webpack.development.js",
+    "build": "webpack --display-error-details -p --progress --colors --config webpack.production.js",
+    "build:watch": "webpack --display-error-details -p --progress --colors --watch --config webpack.production.js",
     "prepublish": "npm run build",
     "test": "jest"
   },
@@ -19,10 +20,16 @@
     "babel-core": "^6.23.1",
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.3.2",
-    "babel-preset-es2015": "^6.22.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "clean-webpack-plugin": "^0.1.15",
+    "html-webpack-plugin": "^2.30.1",
     "jest": "^19.0.2",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.8.2"
   },
   "repository": {
     "type": "git",
