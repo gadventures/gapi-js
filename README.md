@@ -24,14 +24,14 @@ const g = new Gapi({ key: yourGAPIKey [, url: gApiUrl [, proxy: yourProxy]] });
 Methods
 -------
 
-* [`get()`](#getresourceid)
+* [`get()`](#getid--id2--id3-)
 * [`list()`](#list)
-* [`order()`](#order)
+* [`order()`](#orderfield--field2--field3-)
 * [`query()`](#queryquerystring)
 * [`page()`](#pagepage--pagesize)
-* [`post()`, `patch()`](#post-and-patchresourceid)
+* [`post()`, `patch()`](#post-and-patchid--id2--id3-)
 * [`send()`](#sendjsonstringobject)
-* [`del()`](#delresourceid)
+* [`del()`](#delid--id2--id3-)
 * [`end()`](#end-error-response---)
 
 These commands are all chainable, but must always start with a resource name.
@@ -74,9 +74,9 @@ g.places.list().page(2, 15)  // page = 2 , pageSize = 15
 g.end(callback);
 ```
 
-#### `order(...)`
+#### `order(field [, field2 [, field3 ...]])`
 
-Specifies a list of ordering properties for the pagination, which must be properties on the target resource.  If the property in params is preceeded by a `-` then the list will be ordered on that property in descending instead of the (normally) ascending fashion.  i.e. .order('name', '-id') will sort first by name.  If any items in the list have the same name, those items will be sorted with highest id first.  Beware though, currently GAPI processes all ascending sort items first in the order they occured, then processes all descending items in the order they occurred.  Thus although  `.order('-name', 'place', 'id')` and `.order('place', 'id', '-name')` will produce different request urls, the results of the calls will be the same.  This weirdness may be subject to change.
+Specifies a list of ordering properties for the pagination, which must be fields on the target resource.  If the property in params is preceeded by a `-` then the list will be ordered on that property in descending instead of the (normally) ascending fashion.  i.e. .order('name', '-id') will sort first by name.  If any items in the list have the same name, those items will be sorted with highest id first.  Beware though, currently GAPI processes all ascending sort items first in the order they occured, then processes all descending items in the order they occurred.  Thus although  `.order('-name', 'place', 'id')` and `.order('place', 'id', '-name')` will produce different request urls, the results of the calls will be the same.  This weirdness may be subject to change.
 
 
 #### `query(queryString)`
