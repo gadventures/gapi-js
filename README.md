@@ -32,6 +32,7 @@ Methods
 * [`post()`, `patch()`](#post-and-patchid--id2--id3-)
 * [`send()`](#sendjsonstringobject)
 * [`del()`](#delid--id2--id3-)
+* [`graphql()`](#graphqlquery-variables)
 * [`end()`](#end-error-response---)
 
 These commands are all chainable, but must always start with a resource name.
@@ -139,6 +140,34 @@ Remove a resource from the server.
 
 ```javascript
 g.places.del('8317609').end()
+```
+
+#### `graphql(query, variables)`
+
+GraphQL requests allow us to bundle nested resources without having to make a separate request to retrieve each.
+
+```javascript
+const query = `query query {
+  image($id: ID!) {
+    id
+    variations {
+      image {
+        modification
+        file {
+          url
+        }
+      }
+    }
+  }
+}`;
+
+const variables = {
+  "id": "1234",
+};
+
+g.graphQL(query, variables).end((err, res) => {
+  // res holds the requested data. including the variations
+});
 ```
 
 #### `end( (error, response) => {} )`

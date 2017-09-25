@@ -43,12 +43,12 @@ export default class Gapi extends GapiResources {
     return args.join('/') + '/';
   }
 
-  get( ids ) {
+  get( ...ids ) {
     /**
      * Support for multiple resource Ids
      * For resources that accept more than one id. e.g. `itineraries/123/456/`
     **/
-    const url = this._getUrl(ids);
+    const url = this._getUrl(...ids);
     this.request = request.get(url);
     return this;
   }
@@ -73,8 +73,8 @@ export default class Gapi extends GapiResources {
     return this;
   }
 
-  order(...rest) {
-    rest.forEach((orderProp) => {
+  order(...fields) {
+    field.forEach((orderProp) => {
       let thisOrderProp = orderProp;
       const isDesc = orderProp.indexOf('-') === 0;
       if (isDesc){ thisOrderProp = orderProp.slice(1); }
@@ -101,6 +101,12 @@ export default class Gapi extends GapiResources {
   del (ids) {
     const url = this._getUrl(ids);
     this.request = request.del(url);
+    return this;
+  }
+
+  graphQL(query, variables){
+    const url = [this.baseUrl, 'graphql'].join('/') + '/';
+    this.request = request.post(url).send({query, variables});
     return this;
   }
 
