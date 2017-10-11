@@ -74,7 +74,7 @@ export default class Gapi extends GapiResources {
   }
 
   order(...fields) {
-    field.forEach((orderProp) => {
+    fields.forEach((orderProp) => {
       let thisOrderProp = orderProp;
       const isDesc = orderProp.indexOf('-') === 0;
       if (isDesc){ thisOrderProp = orderProp.slice(1); }
