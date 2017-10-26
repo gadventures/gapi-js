@@ -22,6 +22,9 @@ export default class GapiResources {
   get transport_dossiers() { this.resource = 'transport_dossiers'; return this; }
   set transport_dossiers(value) { return this; }
 
+  get transport_leg_dossiers() { this.resource = 'transport_leg_dossiers'; return this; }
+  set transport_leg_dossiers(value) { return this; }
+
   get activity_dossiers() { this.resource = 'activity_dossiers'; return this; }
   set activity_dossiers(value) { return this; }
 
