@@ -22,7 +22,7 @@ export default class Gapi extends GapiResources {
     this.request.accept(this.proxy ? `application/json;${this.proxy}` : `application/json`);
     this.request.type('application/json');
     this.request.set('X-Application-Key', this.key);
-
+    
     this.request.query(this.queryParams);
     this.dupableParams.forEach((paramPair) => {
       this.request.query(`${paramPair[0]}=${paramPair[1]}`);
@@ -78,7 +78,7 @@ export default class Gapi extends GapiResources {
       let thisOrderProp = orderProp;
       const isDesc = orderProp.indexOf('-') === 0;
       if (isDesc){ thisOrderProp = orderProp.slice(1); }
-      if (thisOrderProp.length === 0) { throw new Error('Order parameter property is an empty string'); }
+      if (thisOrderProp.length === 0) { throw new Error('Order parameter property is an empty string'); } 
       const queryParam = `order_by__${isDesc ? 'desc' : 'asc'}`;
       this.dupableParams.push([queryParam, thisOrderProp]);
       
@@ -116,13 +116,11 @@ export default class Gapi extends GapiResources {
   }
 
   end (callback) {
-    this.request.query({'cache_bust': Date.now()});
     this._setHeadersParams().request.end(callback);
     return this;
   }
 
   then (resolve, reject) {
-    this.request.query({'cache_bust': Date.now()});
     return this._setHeadersParams().request.then(resolve, reject);
   }
 

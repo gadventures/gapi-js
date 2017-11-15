@@ -1,6 +1,6 @@
 {
   "name": "gapi-js",
-  "version": "3.3.0",
+  "version": "3.2.1",
   "description": "A js client for GAPI",
   "main": "build/gapi-js.js",
   "module": "src/gapi-js.js",
