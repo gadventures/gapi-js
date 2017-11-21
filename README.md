@@ -1,6 +1,6 @@
 gapi-js
 ===========
-[![Build Status](https://travis-ci.org/gadventures/gapi-js.svg?branch=master)](https://travis-ci.org/gadventures/gapi-js)
+[![Build Status](https://travis-ci.com/gadventures/gapi-js.svg?branch=master)](https://travis-ci.com/gadventures/gapi-js)
 
 A simple js client for the G Adventures' API (G API) based on [SuperAgent](https://github.com/visionmedia/superagent)
 
