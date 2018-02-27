@@ -10,6 +10,27 @@ export default class GapiResources {
   get places() { this.resource = 'places'; return this;}
   set places(value) { return this; }
 
+  get suppliers() { this.resource = 'suppliers'; return this; }
+  set suppliers(value) { return this; }
+
+  get accommodation_costs() { this.resource = 'accommodation_costs'; return this; }
+  set accommodation_costs(value) { return this; }  
+
+  get band_costs() { this.resource = 'band_costs'; return this; }
+  set band_costs(value) { return this; }  
+
+  get fixed_costs() { this.resource = 'fixed_costs'; return this; }
+  set fixed_costs(value) { return this; }  
+
+  get multishare_costs() { this.resource = 'multishare_costs'; return this; }
+  set multishare_costs(value) { return this; }  
+
+  get per_person_costs() { this.resource = 'per_person_costs'; return this; }
+  set per_person_costs(value) { return this; }
+
+  get per_person_variable_costs() { this.resource = 'per_person_variable_costs'; return this; }
+  set per_person_variable_costs(value) { return this; }  
+
   get dossiers() { this.resource = 'dossiers'; return this; }
   set dossiers(value) { return this; }
 
