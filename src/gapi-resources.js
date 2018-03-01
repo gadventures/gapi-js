@@ -13,24 +13,6 @@ export default class GapiResources {
   get suppliers() { this.resource = 'suppliers'; return this; }
   set suppliers(value) { return this; }
 
-  get accommodation_costs() { this.resource = 'accommodation_costs'; return this; }
-  set accommodation_costs(value) { return this; }  
-
-  get band_costs() { this.resource = 'band_costs'; return this; }
-  set band_costs(value) { return this; }  
-
-  get fixed_costs() { this.resource = 'fixed_costs'; return this; }
-  set fixed_costs(value) { return this; }  
-
-  get multishare_costs() { this.resource = 'multishare_costs'; return this; }
-  set multishare_costs(value) { return this; }  
-
-  get per_person_costs() { this.resource = 'per_person_costs'; return this; }
-  set per_person_costs(value) { return this; }
-
-  get per_person_variable_costs() { this.resource = 'per_person_variable_costs'; return this; }
-  set per_person_variable_costs(value) { return this; }  
-
   get dossiers() { this.resource = 'dossiers'; return this; }
   set dossiers(value) { return this; }
 
@@ -63,9 +45,6 @@ export default class GapiResources {
 
   get tour_categories() { this.resource = 'tour_categories'; return this; }
   set tour_categories(value) { return this; }
-
-  get reporting_offices() { this.resource = 'reporting_offices'; return this; }
-  set reporting_offices(value) { return this; }
 
   get itineraries() { this.resource = 'itineraries'; return this; }
   set itineraries(value) { return this; }
