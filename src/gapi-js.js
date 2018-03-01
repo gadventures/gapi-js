@@ -1,9 +1,8 @@
 import request from 'superagent';
 import GapiResources from './gapi-resources';
-import GapiResourcesPrivate from './gapi-resources-private';
 
 
-export const Gapi = (ResourceClass=GapiResources, ...props) => {
+export const GapiGenerator = (ResourceClass) => {
 
   class Gapi extends ResourceClass {
 
@@ -137,5 +136,4 @@ export const Gapi = (ResourceClass=GapiResources, ...props) => {
   return Gapi;
 };
 
-export default Gapi();
-export const GapiPrivate = Gapi(GapiResourcesPrivate);
+export default GapiGenerator(GapiResources);
