@@ -10,9 +10,6 @@ export default class GapiResources {
   get places() { this.resource = 'places'; return this;}
   set places(value) { return this; }
 
-  get suppliers() { this.resource = 'suppliers'; return this; }
-  set suppliers(value) { return this; }
-
   get dossiers() { this.resource = 'dossiers'; return this; }
   set dossiers(value) { return this; }
 
