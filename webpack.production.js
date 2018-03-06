@@ -16,7 +16,7 @@ module.exports = {
     libraryTarget: 'umd',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
@@ -36,7 +36,8 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpack([PATHS.build])
+    new CleanWebpack([PATHS.build]),
+    // new UglifyJsPlugin({ sourceMap: true })
   ],
   devtool: 'source-map'
 
