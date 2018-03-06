@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin ({ title : 'Gapi JS Examples' }),
-    new webpack.HotModuleReplacementPlugin({ multiStep: true }),
+    new webpack.HotModuleReplacementPlugin({ multiStep: false }),
     new webpack.DefinePlugin({
       conf: {
         api: {
