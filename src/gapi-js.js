@@ -6,7 +6,7 @@ const GapiGenerator = (ResourceClass) => {
 
   class Gapi extends ResourceClass {
 
-    constructor ({url = 'https://rest.gadventures.com', key, proxy}) {
+    constructor ({url = 'https://rest.gadventures.com', key, extraHeaders}) {
       super();
 
       if (!key) {
@@ -15,22 +15,27 @@ const GapiGenerator = (ResourceClass) => {
 
       this.baseUrl = url;
       this.key = key;
-      this.proxy = proxy;
+      this.extraHeaders = extraHeaders;
       this.queryParams = {};
       this.dupableParams = [];
     }
 
     _setHeadersParams () {
-      this.request.accept(this.proxy ? `application/json;${this.proxy}` : `application/json`);
+      this.request.accept(`application/json`);
       this.request.type('application/json');
-      this.request.set('X-Application-Key', this.key);
+      this.request.set('x-application-key', this.key);
+
+      for (const key in this.extraHeaders) {
+        if (this.extraHeaders.hasOwnProperty(key)){
+          this.request.set(key, this.extraHeaders[key])
+        }
+      }
 
       this.request.query(this.queryParams);
       this.dupableParams.forEach((paramPair) => {
         this.request.query(`${paramPair[0]}=${paramPair[1]}`);
       });
       return this;
-      // this.request.set('X-Fastly-Bypass', 'pass');  // Temporary
     }
 
     _getUrl (...ids) {
